@@ -1,0 +1,295 @@
+.relative{
+  background-color: #eee;
+}
+
+md-content.md-default-theme {
+  background-color: #eee;
+}
+
+md-card {
+  background-color: #fff;
+}
+md-card h2:first-of-type {
+  margin-top: 0;
+}
+
+md-toolbar .md-button.md-default-theme {
+  border-radius: 99%;
+}
+
+h2 {
+  font-weight: 400;
+}
+
+.md-toolbar-tools-bottom {
+  font-size: small;
+}
+.md-toolbar-tools-bottom :last-child {
+  opacity: 0.8;
+}
+
+md-toolbar:not(.md-hue-1),
+.md-fab {
+  fill: #fff;
+}
+
+md-sidenav {
+  fill: #737373;
+}
+md-sidenav ng-md-icon {
+  position: relative;
+  top: 5px;
+}
+
+.user-avatar {
+  border-radius: 99%;
+}
+
+
+.falcon-logo .svg-icon path {
+  fill: #ff0000;
+}
+
+md-grid-list {
+  margin: 8px; }
+ .gray {
+  background: #f5f5f5; }
+.green {
+  background: #b9f6ca; }
+.yellow {
+  background: #ffff8d; }
+.blue {
+  background: #84ffff; }
+.purple {
+  background: #b388ff; }
+.red {
+  background: #ff8a80; }
+md-grid-tile {
+  transition: all 400ms ease-out 50ms; }
+
+.breadcrumbs{
+  margin-top: 2px;
+  padding-left:20px;
+  color:#1C5792;
+  font-style: italic;
+  font-weight: bold;
+  font-size: small;
+}
+
+.breadcrumbs p {
+
+margin: 0px;
+
+}
+
+.animate-enter, 
+.animate-leave
+{ 
+    -webkit-transition: 400ms cubic-bezier(0.420, 0.000, 1.000, 1.000) all;
+    -moz-transition: 400ms cubic-bezier(0.420, 0.000, 1.000, 1.000) all;
+    -ms-transition: 400ms cubic-bezier(0.420, 0.000, 1.000, 1.000) all;
+    -o-transition: 400ms cubic-bezier(0.420, 0.000, 1.000, 1.000) all;
+    transition: 400ms cubic-bezier(0.420, 0.000, 1.000, 1.000) all;
+    position: relative;
+    display: block;
+} 
+
+.animate-enter.animate-enter-active, 
+.animate-leave {
+    opacity: 1;
+    left: 0;
+    height: 30px;
+}
+
+.animate-leave.animate-leave-active,
+.animate-enter {
+    opacity: 0;
+    left: -50px;
+    height: 0px;
+}
+
+.dark-green{
+  background: #4CBD51;
+}
+
+.dark-red{
+  background: #F54C4C;
+}
+
+.angular-google-map-container {
+    width: 100%;
+    height: 450px;
+}
+
+/* fix for Twitter Bootstrap handling of responsive images */
+.angular-google-map img {
+    max-width: inherit;
+}
+
+#seachBox_map{
+      
+          border-color: rgba(0,0,0,0.12);
+          -webkit-order: 2;
+    -ms-flex-order: 2;
+    order: 2;
+    display: block;
+    margin-top: 0;
+    background: none;
+    padding-top: 2px;
+    padding-bottom: 1px;
+    padding-left: 2px;
+    padding-right: 2px;
+    border-width: 0 0 1px 0;
+    line-height: 26px;
+    -ms-flex-preferred-size: 26px;
+    border-radius: 0;
+    border-style: solid;
+    width: auto;
+}
+
+#seachBox_map{
+     color: #6F6969;
+}
+
+.tile-shadow{
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+}
+
+md-tabs .md-tab.md-active{
+  color: rgb(13,71,161)!important;
+}
+
+.marker-labels {
+    color: red;
+    background-color: white;
+    font-family: "Lucida Grande", "Arial", sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid black;
+    white-space: nowrap;
+}
+
+
+#navBar::after{
+ 
+  content: "";
+  background: url("../image/traffic.jpg") no-repeat;
+  -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+  opacity: 0.6;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
+}
+
+
+
+#navBar{
+  min-height: 300px;
+  color: white;
+  background-color: black;
+    opacity: 0.8;
+}
+
+#navBar .md-toolbar-tools{
+    background-color: transparent;
+    opacity: 1;
+}
+
+
+  ng-md-icon {
+            -webkit-transition: fill 750ms ease-in-out!important;
+            -moz-transition: fill 750ms ease-in-out!important;
+            -o-transition: fill 750ms ease-in-out!important;
+            transition: fill 750ms ease-in-out!important;
+        }
+        ng-md-icon > svg {
+            -webkit-transition: width 750ms ease-in-out, height 750ms ease-in-out!important;
+            -moz-transition: width 750ms ease-in-out, height 750ms ease-in-out!important;
+            -o-transition: width 750ms ease-in-out, height 750ms ease-in-out!important;
+            transition: width 750ms ease-in-out, height 750ms ease-in-out!important;
+        }
+
+
+.buscase .carousel-indicators {
+
+bottom:-30px;
+
+}
+
+
+.md-toolbar-tools .tool-buttons.active{
+  border-radius: 0px!important;
+  border-bottom: 2px solid white;
+}
+
+#searchBoxParentStartLoc{
+  width: 80%;
+}
+
+#searchBoxParentStartLoc input{
+  color: white;
+  width: 80%;
+}
+
+#searchBoxParentEndLoc{
+  width: 80%;
+
+}
+
+#searchBoxParentEndLoc input{
+ color: white;
+ width: 80%;
+}
+
+#searchBoxParentNearLoc input{
+ color: white;
+ width: 80%; 
+}
+
+
+
+/*#directionSteps div{
+  background-color: white;
+}
+
+#directionSteps{
+  position: absolute;
+  width :320px;
+  z-index: 2;
+  overflow-y:hidden; 
+}
+
+#directionSteps div{
+
+}*/
+
+.stepDetails div{
+  display: inline-block;
+  padding-left: 2px;
+}
+
+.stepDetails div:before{
+
+  
+}
+
+@media (min-width: 768px) {
+
+.login-form{
+  width: 800px;
+  }
+}
+
+
+
+.md-dark{
+  background-color: rgb(86, 82, 82)!important;
+}
+

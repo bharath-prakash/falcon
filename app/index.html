@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="fleetmgntApp">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>FALCON </title>
+
+
+     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://material.angularjs.org/HEAD/angular-material.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/prism.css"/>
+    <!--<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300">-->
+
+  </head>
+  <body layout="row" ng-controller="IndexCtrl" ng-cloak>
+    <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2 animated slideInLeft" md-component-id="sideNav" >
+      <md-toolbar class="md-tall md-hue-2" >
+        <span flex></span>
+        <div layout="column" class="md-toolbar-tools-bottom inset">
+          <user-avatar></user-avatar>
+          <span></span>
+          <div>Firstname Lastname</div>
+          <div>username@email.com</div>
+        </div>
+      </md-toolbar>
+      <md-list>
+      <md-item ng-repeat="item in menu">
+        <a ng-href="{{item.link}}">        
+          <md-item-content md-ink-ripple layout="row" layout-align="start center"  ng-click="toggleSidenav('sideNav')">
+            <div class="inset" style="cursor:pointer;">
+              <ng-md-icon icon="{{item.icon}}"></ng-md-icon>
+            </div>
+            <div class="inset" style="cursor:pointer;">{{item.title}}
+            </div>
+          </md-item-content>
+        </a>
+      </md-item>
+      <md-divider></md-divider>
+      <md-subheader>Management</md-subheader>
+      <md-item ng-repeat="item in admin">
+        <a>
+          <md-item-content md-ink-ripple layout="row" layout-align="start center">
+            <div class="inset">
+              <ng-md-icon icon="{{item.icon}}"></ng-md-icon>
+            </div>
+            <div class="inset" style="cursor:pointer;">{{item.title}}
+            </div>
+          </md-item-content>
+        </a>
+      </md-item>
+    </md-list>
+    </md-sidenav>
+
+    <!-- right nav -->
+
+ <md-sidenav layout="column" class="md-sidenav-right md-whiteframe-z3" md-component-id="sideNavRight" >
+      <md-toolbar class="md-tall md-hue-2">
+        <span flex></span>
+        <div layout="column" class="inset" style="text-align:center;">
+          <md-button aria-label="notifications">
+            <ng-md-icon icon="notifications_on" size="64"></ng-md-icon>
+          </md-button>
+          <div>Notifications</div>
+          <span></span>
+          
+          <div></div>
+        </div>
+      </md-toolbar>
+      <md-list layout-padding>
+      <md-list-item ng-repeat="item in notifications" class="md-3-line">
+        
+          
+            
+            <ng-md-icon icon="{{item.icon}}" size="42" style="padding-right:10px;margin:auto;"></ng-md-icon>
+            
+            <div class="md-list-item-text">
+            <h3 class="ng-binding">{{item.segment}}</h3>
+            <h4 class="ng-binding">{{item.notes}}</h4>
+            <p class="ng-binding">
+            {{item.time}}
+            </p>
+            </div>
+        
+        
+      </md-item>
+     
+    </md-list>
+    </md-sidenav>
+
+    <!-- right nav end -->
+
+
+
+    <div layout="column" class="" layout-fill role="main" style="">
+      <md-toolbar ng-show="!showSearch" id="navBar" scroll>
+        <div class="md-toolbar-tools">
+          <md-button class="md-icon-button  visible-xs" ng-click="toggleSidenav('sideNav')" aria-label="Menu">
+            <ng-md-icon icon="menu" style="   position: relative;top: 7px;"></ng-md-icon>
+             <md-tooltip>
+              Menu
+            </md-tooltip>
+          </md-button>
+          &nbsp;&nbsp;
+          <!--<falcon-logo></falcon-logo>&nbsp;&nbsp;-->
+          <h2 >
+            FALCON 
+          </h2>
+        
+          <span flex=""></span>
+          <div class="hidden-xs">
+          <md-button ng-repeat="item in menu" class="tool-buttons" click-link="{{item.btnLink}}">{{item.title}}</md-button>
+
+          <!--   <md-button class="tool-buttons">Config</md-button>
+           <md-button class="tool-buttons">Devices</md-button> -->
+          </div>
+          <md-button aria-label="Search" class="md-icon-button" ng-click="showSearch = !showSearch" style="padding:10px;">
+            <ng-md-icon icon="search"></ng-md-icon>
+              <md-tooltip>
+              Search
+            </md-tooltip>
+          </md-button>
+
+          <md-button aria-label="login" class="md-icon-button" ng-click="login($event)" style="padding:10px;">
+            
+            <md-icon md-svg-src="img/login.svg" aria-label="login"  style="position: relative;top: -10px;" ></md-icon>
+              <md-tooltip>
+              Login
+            </md-tooltip>
+          </md-button>
+
+
+          
+
+          <md-button  class="md-icon-button " ng-click="toggleSidenav('sideNavRight')" aria-label="Notification" style="padding:10px;">
+            <ng-md-icon icon="notifications" class="animated infinite swing"></ng-md-icon>
+            <md-tooltip>
+        Notifications
+      </md-tooltip>
+          </md-button>
+          <md-menu>
+          <md-button uib-dropdown-toggle class="md-icon-button " aria-label="Open Settings" style="padding:10px;" ng-click="openMenu($mdOpenMenu, $event)">
+            <ng-md-icon md-menu-origin icon="more_vert"></ng-md-icon>
+            <md-tooltip>
+        View More
+      </md-tooltip>
+          </md-button>
+       <md-menu-content width="4">
+              <md-menu-item>
+                <md-button ng-click="ctrl.redial($event)">
+                  <ng-md-icon icon="account_box" size="32" style="    position: relative;top: 10px;"></ng-md-icon>
+                  Profile
+                </md-button>
+              </md-menu-item>
+              
+            </md-menu-content>
+          </md-menu>
+
+        </div>
+      
+      <div style="max-height:235px;" >
+
+        <div class="hidden-xs col-sm-12 col-md-6" style="padding-top:55px;">
+          <h2 style="float:left;text-align: center;">ENTERPRISE AND PERSONAL <u>GEOLOCATION</u> MANAGEMENT PLATFORM </h2>
+        </div>
+
+        <div class="visible-xs col-sm-12" style="padding-top:55px;">
+          <h3 style="float:left;text-align: center;">ENTERPRISE AND PERSONAL <u>GEOLOCATION</u> MANAGEMENT PLATFORM</h3>
+        </div>
+
+        <div class="hidden-sm hidden-xs col-sm-12 col-md-6" style="padding-top:55px;">
+
+       <md-card style="background-color:transparent;opacity:1;" class="buscase" ng-controller="BusinessCaseCtrl">
+                   <md-card-content>
+                            
+                            <div class="md-tile-content">
+                              <carousel interval="myInterval">
+                                  <slide ng-repeat="option in options" active="option.active">
+                                   
+                                      
+                                     <div style=""><ng-md-icon icon="{{option.icon}}" ng-attr-style="fill: white" size="64"></ng-md-icon></div>    
+                              <div style=""><span>{{option.usecase}}</span> </div>
+                                    
+                                 <div class="carousel-caption">
+                                    </div>
+                                  </slide>
+                                </carousel>
+                              
+                             </div>
+                      
+                    </md-card-content>
+                  </md-card>
+        
+        </div>
+
+        
+
+      </div>
+   
+      </md-toolbar>
+
+      <md-toolbar class="md-hue-1" ng-show="showSearch">
+        <div class="md-toolbar-tools">
+          <md-button ng-click="showSearch = !showSearch" aria-label="Back">
+            <ng-md-icon icon="arrow_back"></ng-md-icon>
+          </md-button>
+          <h3 flex="10">
+            Back
+          </h3>
+          <md-input-container md-theme="input" flex>
+            <label>&nbsp;</label>
+            <input ng-model="search.who" placeholder="enter search">
+          </md-input-container>
+          <md-button aria-label="Search" ng-click="showSearch = !showSearch">
+            <ng-md-icon icon="search"></ng-md-icon>
+          </md-button>
+          <md-button aria-label="Notifications" ng-click="showNotifications">
+            <ng-md-icon icon="notifications"></ng-md-icon>
+          </md-button>
+          <md-button aria-label="Open Settings" ng-click="showListBottomSheet($event)">
+            <ng-md-icon icon="more_vert"></ng-md-icon>
+          </md-button>
+        </div>
+       
+      </md-toolbar>
+      <!-- Start of login dialog -->
+<!--       <div style="display:block;!important" >
+   <md-content md-theme="docs-dark" layout-padding layout="column" >   
+  <form>
+    <md-tabs md-selected="loginTabIndex" md-border-bottom md-autoselect>
+      <md-tab ng-repeat="tab in loginFromData"    label="{{tab.text}}">
+        <div class="tab{{$index%4}}" style="padding: 25px;">
+          
+      <md-toolbar>
+      <div class="md-toolbar-tools" style="display:block;">
+        <h2>   <md-icon md-svg-src="{{tab.iconUrl}}" aria-label="login" size="42"  style="" ></md-icon> {{tab.text}}</h2>
+        <span flex></span>
+        
+      </div>
+      </md-toolbar>
+      <md-dialog-content style="">
+      <div class="md-dialog-content">
+        <div  layout="column" ng-cloak>
+      <br/>
+      <md-content layout-padding class="autoScroll">
+      <md-input-container class="md-icon-float md-block" ng-repeat="inelm in tab.inputs">
+        
+        <label>{{inelm.label}}</label>
+        <md-icon md-svg-src="{{inelm.iconUrl}}" aria-label="{{inelm.label}}"  ></md-icon>
+        <input  type="{{inelm.type}}">
+      </md-input-container>
+      
+      </md-content>
+    </div>
+      
+      </div>
+      </md-dialog-content>
+      <div class="md-actions" layout="row">
+      <md-button class="md-raised md-primary" ng-class="tab.linkButton.ngClass" ng-click="">{{tab.linkButton.label}}</md-button>
+      <span flex></span>
+      <section layout="row" layout-sm="column" layout-align="end center" layout-wrap>
+        <md-button ng-repeat="btn in tab.actionButtons" class="md-raised md-primary" ng-class="btn.ngClass" ng-click="">{{btn.label}}</md-button>
+        
+      </section>    
+  </div>
+      
+      
+          
+        </div>
+      </md-tab>
+    </md-tabs>
+  
+  </form>
+</md-content>
+</div> -->
+
+ <div style="display:block;!important" ng-show="viewlogin" ng-class="viewloginClass">
+   <md-content md-theme="docs-dark" layout-padding layout="column" >   
+  <form>
+    <md-tabs md-selected="loginTabIndex" md-border-bottom md-autoselect>
+      <md-tab   >
+   <md-tab-label> <md-icon md-svg-src="img/login.svg" aria-label="login" size="42"  style="" ></md-icon> Singin </md-tab-label>
+  <md-tab-body layout="row" layout-md="column"  style="padding-top:5xp;">
+    <md-input-container>
+      <label>Email</label>
+      <input ng-model="user.email" type="email">
+    </md-input-container>
+    <md-input-container>
+      <label>Password</label>
+      <input ng-model="user.password" type="password">
+    </md-input-container>
+
+    <section layout-align="end center" layout-wrap>
+        <md-button  class="md-raised md-primary" ng-class="" ng-click="closeLogin($event)">Login</md-button>
+        <md-button  class="md-raised md-primary md-hue-1" ng-class="" ng-click="">Reset</md-button>
+        
+      </section>
+  </md-tab-body>
+ </md-tab>
+ 
+ <md-tab >
+ 
+ <md-tab-label> <md-icon md-svg-src="img/account-plus.svg" aria-label="login" size="42"  style="" ></md-icon> Signup </md-tab-label>
+ <md-tab-body style="padding-top:5xp;">
+    <form name="userForm">
+      <div layout layout-sm="column">
+        <md-input-container flex>
+          <label>Full Name (First Last)</label>
+          <input ng-model="user.name" >
+        </md-input-container>
+        <md-datepicker ng-model="user.submissionDate" md-placeholder="Date of Birth"></md-datepicker>
+      </div>
+      <div layout layout-sm="column">
+        <md-input-container flex>
+          <label>Email</label>
+          <input ng-model="user.email" type="email">
+        </md-input-container>
+        <md-input-container flex>
+          <label>Password</label>
+          <input ng-model="user.password" type="password">
+        </md-input-container>
+        <md-input-container flex>
+          <label>Confirm Password</label>
+          <input ng-model="user.cfpassword" type="password">
+        </md-input-container>
+      </div>
+      <md-input-container class="md-block">
+        <label>Address</label>
+        <input ng-model="user.address">
+      </md-input-container>
+      <md-input-container md-no-float class="md-block">
+        <input ng-model="user.address2" placeholder="Address 2">
+      </md-input-container>
+      <div layout layout-sm="column">
+        <md-input-container flex>
+          <label>City</label>
+          <input ng-model="user.city">
+        </md-input-container>
+        <md-input-container flex>
+          <label>State</label>
+          <md-select ng-model="user.state">
+            <md-option ng-repeat="state in states" value="{{state.abbrev}}">
+              {{state.abbrev}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Postal Code</label>
+          <input name="postalCode" ng-model="user.postalCode" placeholder="12345"
+                 required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+          <div ng-messages="userForm.postalCode.$error" role="alert" multiple>
+            <div ng-message="required" class="my-message">You must supply a postal code.</div>
+            <div ng-message="pattern" class="my-message">That doesn't look like a valid postal
+              code.
+            </div>
+            <div ng-message="md-maxlength" class="my-message">
+              Don't use the long version silly...we don't need to be that specific...
+            </div>
+          </div>
+        </md-input-container>
+      </div>
+      <md-input-container class="md-block">
+        <label>Biography</label>
+        <textarea ng-model="user.biography" columns="1" md-maxlength="150"></textarea>
+      </md-input-container>
+      <section layout-align="end center" layout-wrap>
+        <md-button  class="md-raised md-primary" ng-class="" ng-click="closeLogin($event)">Singup</md-button>
+        <md-button  class="md-raised md-primary md-hue-1" ng-class="" ng-click="">Reset</md-button>
+        
+      </section>
+    </form>
+</md-tab-body>
+  </md-tab>
+    </md-tabs>
+  
+  </form>
+</md-content>
+</div>
+<!-- End of login dialog -->
+<div ng-view style="display:block;" >
+    
+  </div> 
+
+
+    </div>
+  
+
+    <!-- Angular Material Dependencies -->
+    
+
+<script src="js/jquery.js"></script>
+    <script src="js/angular.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/angular-animate.min.js"></script>
+    <script src="js/angular-aria.min.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="bower_components/angular-ui-router.js"></script>
+    <script src="bower_components/angular-strap/dist/angular-strap.js"></script>
+    <script src="bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
+    <script src="js/ui-bootstrap.min.js"></script>
+    <script src="js/ui-bootstrap-tpls.min.js"></script>
+    <!--<script src="js/angular-material.min.js"></script>-->
+    <script src="https://material.angularjs.org/HEAD/angular-material.js"></script>
+    <script src='bower_components/lodash/lodash.min.js'></script>
+  <script src='bower_components/angular-google-maps/dist/angular-google-maps.min.js'></script>
+  <script src='bower_components/angularjs-geolocation/dist/angularjs-geolocation.min.js'></script>
+    <script src='bower_components/angular-sanitize/angular-sanitize.min.js'></script>
+    <script src='bower_components/angularjs-carousel/src/carousel.js'></script>
+      <script src="bower_components/satellizer/satellizer.min.js"></script>
+ 
+
+    <script type="text/javascript" src="js/prism.js"></script>
+    <script src="js/angular-material-icons.min.js"></script> 
+    <script type="text/javascript" src="js/fusioncharts.js"></script>
+    <script type="text/javascript" src="js/fusioncharts.theme.ocean.js"></script>    
+    <script src="js/angular-fusioncharts.min.js"></script> 
+    <script src="js/svg-morpheus.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/directives.js"></script>
+ 
+  </body>
+</html>

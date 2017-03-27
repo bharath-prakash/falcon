@@ -1,0 +1,103 @@
+md-content.md-default-theme {
+  background-color: #eee;
+}
+
+md-card {
+  background-color: #fff;
+}
+md-card h2:first-of-type {
+  margin-top: 0;
+}
+
+md-toolbar .md-button.md-default-theme {
+  border-radius: 99%;
+}
+
+h2 {
+  font-weight: 400;
+}
+
+.md-toolbar-tools-bottom {
+  font-size: small;
+}
+.md-toolbar-tools-bottom :last-child {
+  opacity: 0.8;
+}
+
+md-toolbar:not(.md-hue-1),
+.md-fab {
+  fill: #fff;
+}
+
+md-sidenav {
+  fill: #737373;
+}
+md-sidenav ng-md-icon {
+  position: relative;
+  top: 5px;
+}
+
+.user-avatar {
+  border-radius: 99%;
+}
+
+
+.falcon-logo .svg-icon path {
+  fill: #ff0000;
+}
+
+md-grid-list {
+  margin: 8px; }
+ .gray {
+  background: #f5f5f5; }
+.green {
+  background: #b9f6ca; }
+.yellow {
+  background: #ffff8d; }
+.blue {
+  background: #84ffff; }
+.purple {
+  background: #b388ff; }
+.red {
+  background: #ff8a80; }
+md-grid-tile {
+  transition: all 400ms ease-out 50ms; }
+
+.breadcrumbs{
+  margin-top: 2px;
+  padding-left:20px;
+  color:#1C5792;
+  font-style: italic;
+  font-weight: bold;
+  font-size: small;
+}
+
+.breadcrumbs p {
+
+}
+
+.animate-enter, 
+.animate-leave
+{ 
+    -webkit-transition: 400ms cubic-bezier(0.420, 0.000, 1.000, 1.000) all;
+    -moz-transition: 400ms cubic-bezier(0.420, 0.000, 1.000, 1.000) all;
+    -ms-transition: 400ms cubic-bezier(0.420, 0.000, 1.000, 1.000) all;
+    -o-transition: 400ms cubic-bezier(0.420, 0.000, 1.000, 1.000) all;
+    transition: 400ms cubic-bezier(0.420, 0.000, 1.000, 1.000) all;
+    position: relative;
+    display: block;
+} 
+
+.animate-enter.animate-enter-active, 
+.animate-leave {
+    opacity: 1;
+    left: 0;
+    height: 30px;
+}
+
+.animate-leave.animate-leave-active,
+.animate-enter {
+    opacity: 0;
+    left: -50px;
+    height: 0px;
+}

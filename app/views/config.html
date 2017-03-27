@@ -1,0 +1,65 @@
+
+  
+
+ <md-content flex md-scroll-y >
+    
+        <ui-view layout="column" layout-fill layout-padding>
+          <div class="inset" hide-sm></div>
+            
+              <div layout="row" layout-align="center center">
+
+
+                 <md-card flex-gt-sm="90" >
+                    <md-card-content md-theme="docs-bright">
+                      
+                      <div style="padding:20px;">
+                      <h2>CONFIGURE <small> your rules and alerts based on locations to manage day to day activities.  </small></h2>
+                      </div>
+                      <md-divider></md-divider>
+                      
+                      <md-content md-theme="docs-dark" layout-padding layout="column" layout-gt-sm="row" >
+    <md-input-container flex>
+      <label>Rule Name</label>
+      <input ng-model="user.title">
+      <p style="color:#E1E1E1;"> Please enter a sensible rule name which reflect your intention of grouping your location data. Such as "Daily drive to office ". </p>
+    </md-input-container>
+    <md-input-container flex>
+      <label>Rule Type</label>
+      
+        <md-select ng-model="selectedType" ng-change="selectedRuleType(selectedType)">
+          <md-option ng-repeat="typeObj in ruleObj.type" ng-value="typeObj" >
+            {{typeObj.desc}}
+          </md-option>
+        </md-select>
+        
+<p style="color:#E1E1E1;">  Please choose applicable rule type. This choice will reflect your next steps in rule defination.   </p>
+         
+    </md-input-container>
+  </md-content>
+
+  <md-content md-theme="docs-dark" layout-padding layout="column"  >
+      <md-input-container flex>
+        <label>Notes</label>
+        <textarea ng-model="config.notes" columns="1" md-maxlength="150"></textarea>
+      </md-input-container>
+
+    
+    
+<location-dir/>
+
+<!--<maps-grid/>-->
+
+
+
+
+   
+  </md-content>
+ </form>
+
+                    </md-card-content>
+                  </md-card>
+
+    
+              </div>
+        </ui-view>
+      </md-content>

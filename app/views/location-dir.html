@@ -1,0 +1,148 @@
+
+     <div ng-repeat="elems in ruleObj.locCtrl">
+
+    <div ng-if="elems.elmName == 'startLoc'" >
+
+            <div class="row">
+
+            <div class="col-xs-12 col-sm-6">
+                <div class="col-xs-12">
+                <label>Start Location </label>
+                </div>
+
+                <div class="col-xs-12">
+                <ng-md-icon icon="location_on" style="fill:white;" size="24"></ng-md-icon>
+                    <span >Lat : {{map.markers[0].longitude}}, Long : {{map.markers[0].latitude}}</span>
+            </div>
+            <div class="col-xs-12">
+                <span style="padding-top:10px" >
+                <ng-md-icon icon="my_location" style="fill:white;" size="24"></ng-md-icon>
+                    {{mapaddr}}</span>
+            </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6">
+                <div class="col-xs-12">
+                <label>End Location </label>
+                </div>
+
+                <div class="col-xs-12">
+                <ng-md-icon icon="location_on" size="24" style="fill:white;"></ng-md-icon>
+                   <span >Lat : {{map.markers[1].longitude}}, Long : {{map.markers[1].latitude}}</span>
+            </div>
+            <div class="col-xs-12">
+                <span style="padding-top:10px" >
+                <ng-md-icon icon="my_location" size="24" style="fill:white;"></ng-md-icon>
+                    {{map1addr}}</span>
+            </div>
+            </div>
+        </div>
+
+            
+       <div class="row">
+         <div class="col-xs-12 col-sm-6">
+        <md-content><md-input-container flex id="searchBoxParentStartLoc">   </md-input-container></md-content>
+            </div>
+        <div class="col-xs-12 col-sm-6">
+        <md-content><md-input-container flex id="searchBoxParentEndLoc">   </md-input-container></md-content>
+
+            </div>
+       </div>
+
+       
+
+    <div class="row" >
+
+    
+
+    <div id="routeOpts" class="col-xs-12">
+        <md-button ng-repeat="route in routes" ng-class="route.class" ng-click="displayRtDtls($index,$event)">{{route.highlts}}</md-button>
+      
+    </div>
+
+    <div ng-class="" class="col-xs-12">
+
+     <ui-gmap-google-map
+                center="map.center"
+                zoom="map.zoom"
+                dragging="map.dragging"
+                bounds="map.bounds"
+                events="map.events"
+                options="map.options"
+                pan="true"
+                control="map.control"
+                >
+            <ui-gmap-search-box options="searchbox.options" template="searchbox.template"
+                            events="searchbox.events" position="searchbox.position" parentdiv="searchbox.parentdiv"></ui-gmap-search-box>
+
+            <ui-gmap-search-box options="searchbox1.options" template="searchbox1.template"
+                            events="searchbox1.events" position="searchbox1.position" parentdiv="searchbox1.parentdiv"></ui-gmap-search-box>
+
+       
+            <ui-gmap-markers idkey="map.idkey" options="'options'" models="map.markers" coords="'self'" icon="'icon'"
+                             click="'map.onClick'" events="map.markerEvents"> ></ui-gmap-markers>
+            <ui-gmap-window coords="selected" idkey="selected.place_id" templateurl="selected.templateurl"
+                            templateparameter="selected.templateparameter" options="selected.options"
+                            closeClick='selected.closeClick()' ng-cloak>
+            </ui-gmap-window>
+        </ui-gmap-google-map>
+    </div>
+
+     
+    
+              </div>
+
+            
+    </div>
+
+
+
+    <div ng-if="elems.elmName == 'nearLoc'">
+        <div class="row">
+            <div class="col-xs-12"><label>Nearby Location </label></div>
+            <div class="col-xs-12 col-sm-6">
+                <ng-md-icon icon="location_on" size="24" style="fill:white;"></ng-md-icon>
+                    <span >{{map2lcn}}</span></div>
+                <div class="col-xs-12 col-sm-6">
+                <span style="padding-top:10px" >
+                0<ng-md-icon icon="my_location" size="24" style="fill:white;"></ng-md-icon>
+                    {{map2addr}}</span>
+                </div>
+            </div>
+
+<md-content  layout-padding layout="column" >
+    <md-input-container flex id="searchBoxParentNearLoc">   </md-input-container>
+
+</md-content>
+    <div > 
+     <ui-gmap-google-map
+                center="map2.center"
+                zoom="map2.zoom"
+                dragging="map2.dragging"
+                bounds="map2.bounds"
+                events="map2.events"
+                options="map2.options"
+                pan="true"
+                control="map2.control"
+                >
+            <ui-gmap-search-box options="searchbox2.options" template="searchbox2.template"
+                            events="searchbox2.events" position="searchbox2.position" parentdiv="searchbox2.parentdiv"></ui-gmap-search-box>
+
+       
+            <ui-gmap-markers idkey="map2.idkey" models="map2.markers" coords="'self'" icon="'icon'"
+                             click="'onClicked'"></ui-gmap-markers>
+            <ui-gmap-window coords="selected2" idkey="selected2.place_id" templateurl="selected2.templateurl"
+                            templateparameter="selected2.templateparameter" options="selected2.options"
+                            closeClick='selected2.closeClick()' ng-cloak>
+            </ui-gmap-window>
+        </ui-gmap-google-map>
+              </div>
+
+            </div>
+              </div>
+      <section layout="row" layout-sm="column" layout-align="end center" layout-wrap>
+      <md-button ng-show="direction" class="md-raised md-primary" ng-click="getDirection()">Show Direction</md-button>
+      <md-button ng-disabled="saveBtn.disable" ng-class="saveBtn.class" class="md-raised md-primary">Save</md-button>
+      <md-button class="md-raised md-primary">Reset</md-button>
+      
+    </section>

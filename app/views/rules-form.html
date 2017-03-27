@@ -1,0 +1,32 @@
+            <div  class="custom-form">
+                        <form class="form-horizontal" id="createRulesForm">
+
+                          <div class="form-group">
+                            <label for="ruleName" class="col-sm-2 control-label">Rule name</label>
+                            <div class="col-sm-10">
+                              <input type="email" class="form-control" id="ruleName" placeholder="Rule Name">
+                              <p> Please enter a sensible rule name which reflect your intention of grouping your location data. Such as "Daily drive to office ". </p>
+
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">Rule Type</label>
+                            <div class="col-sm-10">
+                              <select name="ruleType" ng-options="type.desc for type in ruleObj.type" id="ruleType" class="form-control" ng-change="selectedRuleType()" ng-model="selectedType">
+                                
+                                
+                              </select>
+                              <p> Please choose applicable rule type. This choice will reflect your next steps in rule defination.   </p>
+                            </div>
+                          </div>
+                       
+                          <location-dir/>  
+                       
+                       
+                          <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                              <button type="submit" class="btn btn-default">Create</button>
+                            </div>
+                          </div>
+                        </form>
+                    </div>

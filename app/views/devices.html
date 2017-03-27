@@ -1,0 +1,126 @@
+
+  
+
+ <md-content flex md-scroll-y>
+    
+          <div class="inset" hide-sm></div>
+            
+              <div  layout-align="center center">
+
+
+    <md-tabs md-dynamic-height md-border-bottom style="background-color:#fff;">
+      <md-tab label="Activations" >
+        <md-content class="md-padding" style="background-color:#fff;">
+
+        <md-card>
+                    <md-card-content>
+                      <h3>Activations Requests</h3>
+                      <md-list>
+                        <md-list-item >
+                          
+                            
+
+                                <md-button class=" md-primary" aria-label="activations">
+                                <ng-md-icon style="fill:rgb(33,150,243);" icon="dock" size="64"></ng-md-icon>
+                                </md-button>
+                                
+                            
+                            <div class="md-list-item-text">
+                              <p>No pending activations requests</p>
+                              
+                            </div>
+                          
+                          
+                        </md-list-item>
+                        
+                      </md-list>
+                    </md-card-content>
+                  </md-card>
+
+          
+        </md-content>
+      </md-tab>
+      <md-tab label="All">
+        <md-content class="md-padding" style="background-color:#fff;">
+
+<h3>Devices</h3>
+                    
+                     <!--  <md-list>
+                        <md-list-item ng-repeat="item in devices | filter:search"  layout="row">
+                           <ng-md-icon icon="perm_device_info" style="fill:rgb(33,150,243);" size="64"></ng-md-icon>
+                            <div class="md-list-item-text">
+                              <h4>{{item.nickname}}</h4>
+                              <p>MAC : {{item.MAC}}</p>
+                              <p>{{item.status}}</p>
+                              <p>{{item.registrationDate}}</p>
+                            </div>
+                            <div class="" layout-align="end center">
+                              <md-button class="md-icon-button md-primary" aria-label="activations" >
+                                <ng-md-icon icon="location_disabled" style="fill:rgb(33,150,243);" size="24"></ng-md-icon>
+                                  <md-tooltip>
+                                Deactive
+                              </md-tooltip>
+                              </md-button>
+                            </div>
+                          
+                          <md-divider md-inset hide-sm ng-if="!$last"></md-divider>
+                          <md-divider hide-gt-sm ng-if="!$last"></md-divider>
+                        </md-list-item>
+                        <md-divider></md-divider>
+                        <md-list-item layout="row" class="inset" >
+                            <md-button layout layout-align="end center" flex class="md-primary" >
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg> More
+                            </md-button>
+                        </md-list-item>
+                      </md-list>
+                     -->
+
+                     <md-grid-list
+        md-cols-sm="1" md-cols-md="2" md-cols-gt-md="4"
+        md-row-height-gt-md="1:1" md-row-height="1:1"
+        md-gutter="12px" md-gutter-gt-sm="20px" >
+
+    <md-grid-tile 
+        md-rowspan="1" md-colspan="1" ng-repeat="item in devices | filter:search" ng-class="checkActive(item.status)" style=" box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);">
+                <md-button class=" md-primary" aria-label="devices">
+                    <ng-md-icon icon="perm_device_info" style="fill:#fff;" size="42"></ng-md-icon>
+                  </md-button>
+                    <div class="md-list-item-text" style="color:#fff; margin-right:2px;">
+                      
+                    <p>MAC : {{item.MAC}}</p>
+
+                              <p>
+                                {{item.status}}
+                              </p>
+                              <p>
+                                {{item.registrationDate}}
+                              </p>
+                              </div>
+    <md-grid-tile-footer >
+      
+    <h3 style="display:inline-block;">{{item.nickname}}</h3>
+    <md-button class="md-icon-button md-primary" aria-label="activations" style="display:inline-block;">
+                                <ng-md-icon icon="location_disabled" style="fill:#fff;position: relative;
+    top: 6px;" size="24"></ng-md-icon>
+                                  <md-tooltip>
+                                Deactive
+                              </md-tooltip>
+                              </md-button>
+    </md-grid-tile-footer>
+    </md-grid-tile>
+
+   </md-grid-list>
+
+
+<md-item layout="row" class="inset" >
+                            <md-button layout layout-align="end center" flex class="md-primary" >
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg> More
+                            </md-button>
+                        </md-item>
+
+        </md-content>
+      </md-tab>
+      
+    </md-tabs>
+              </div>
+      </md-content>

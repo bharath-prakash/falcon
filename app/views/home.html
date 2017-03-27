@@ -1,0 +1,89 @@
+  
+
+
+
+      <md-content flex md-scroll-y style="display:inline!important;">
+      <ui-view layout="column" layout-fill  layout-padding>
+          <div class="inset" hide-sm></div> 
+
+          <div style="display:block!important;">
+        <md-grid-list
+        md-cols-sm="1" md-cols-md="3" md-cols-gt-md="5" md-cols-lg="5"
+        md-row-height-gt-sm="1:1" md-row-height="1:1"
+        md-gutter="12px" md-gutter-gt-sm="8px" style="">
+    
+  
+    <md-grid-tile ng-repeat="item in indicators" class="{{item.color}}"
+        md-rowspan="1" md-colspan="1" md-colspan-sm="1">
+        <p style="font-size:36px;">{{item.value}}</p>&nbsp;&nbsp;
+        <ng-md-icon icon="{{item.icon}}" size="{{item.icon_size}}"></ng-md-icon>
+      <md-grid-tile-footer>
+        <h3>{{item.footer_text}}</h3>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+
+  </md-grid-list>
+</div>
+  <!-- <md-grid-list
+        md-cols-sm="1" md-cols-md="1" md-cols-gt-md="2" 
+        md-row-height-gt-sm="1:1" md-row-height="1:1"
+        md-gutter="12px" md-gutter-gt-sm="8px" style="display:block!important;">
+    
+  
+    <md-grid-tile class=""
+        md-rowspan="1" md-colspan="1" md-colspan-sm="1">
+         <md-card >
+                   <md-card-content>
+                      <md-list>
+                        <md-item >
+                          <md-item-content>
+                            
+                            <div class="md-tile-content">
+                              
+                              <fusioncharts 
+                              width="500" 
+                              height="400"
+                              type="column2d"
+                              datasource="{{myDataSource}}"
+                              ></fusioncharts>
+
+                            </div>
+                          </md-item-content>
+                        </md-item>
+                      </md-list>
+                    </md-card-content>
+                  </md-card>
+    </md-grid-tile>
+
+    <md-grid-tile class=""
+        md-rowspan="1" md-colspan="1" md-colspan-sm="1">
+         <md-card >
+                   <md-card-content>
+                      <md-list>
+                        <md-item >
+                          <md-item-content>
+                            
+                            <div class="md-tile-content">
+                              
+                              <div fusioncharts
+                              width="500" 
+                              height="400"
+                              type="msline"
+                              chart="{{attrs}}"
+                              categories="{{categories}}"
+                              dataset="{{dataset}}"
+                              ></div>
+                            </div>
+                          </md-item-content>
+                        </md-item>
+                      </md-list>
+                    </md-card-content>
+                  </md-card>
+    </md-grid-tile>
+
+  </md-grid-list>
+
+ 
+           -->
+        </ui-view>
+      </md-content>

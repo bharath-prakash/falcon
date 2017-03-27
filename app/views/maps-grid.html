@@ -1,0 +1,101 @@
+  <md-grid-list
+        md-cols-sm="1" md-cols-md="1" md-cols-gt-md="2"
+        md-row-height-gt-md="1:1" md-row-height="1:1"
+        md-gutter="12px" md-gutter-gt-sm="20px" >
+
+    <md-grid-tile 
+        md-rowspan="1" md-colspan="1" class="tile-shadow" ng-repeat="elems in ruleObj.locCtrl">
+                 <div ng-if="elems.elmName == 'startLoc'" layout-padding layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+
+        <md-content  >
+            <label >Start Location</label>
+    <md-input-container flex id="searchBoxParentStartLoc">   </md-input-container></md-content>
+    <div > 
+     <ui-gmap-google-map
+                center="map.center"
+                zoom="map.zoom"
+                dragging="map.dragging"
+                bounds="map.bounds"
+                events="map.events"
+                options="map.options"
+                pan="true"
+                control="map.control"
+                >
+            <ui-gmap-search-box options="searchbox.options" template="searchbox.template"
+                            events="searchbox.events" position="searchbox.position" parentdiv="searchbox.parentdiv"></ui-gmap-search-box>
+
+       
+            <ui-gmap-markers idkey="map.idkey" models="map.markers" coords="'self'" icon="'icon'"
+                             click="'onClicked'"></ui-gmap-markers>
+            <ui-gmap-window coords="selected" idkey="selected.place_id" templateurl="selected.templateurl"
+                            templateparameter="selected.templateparameter" options="selected.options"
+                            closeClick='selected.closeClick()' ng-cloak>
+            </ui-gmap-window>
+        </ui-gmap-google-map>
+              </div>
+    </div>
+				
+    <div ng-if="elems.elmName == 'endLoc'" layout-padding layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+
+
+ <md-content>
+            <label>End Location</label>
+    <md-input-container flex id="searchBoxParentEndLoc">   </md-input-container></md-content><div > 
+     <ui-gmap-google-map
+                center="map1.center"
+                zoom="map1.zoom"
+                dragging="map1.dragging"
+                bounds="map1.bounds"
+                events="map1.events"
+                options="map1.options"
+                pan="true"
+                control="map1.control"
+                >
+            <ui-gmap-search-box options="searchbox1.options" template="searchbox1.template"
+                            events="searchbox1.events" position="searchbox1.position" parentdiv="searchbox1.parentdiv"></ui-gmap-search-box>
+
+       
+            <ui-gmap-markers idkey="map1.idkey" models="map1.markers" coords="'self'" icon="'icon'"
+                             click="'onClicked'"></ui-gmap-markers>
+            <ui-gmap-window coords="selected1" idkey="selected1.place_id" templateurl="selected1.templateurl"
+                            templateparameter="selected1.templateparameter" options="selected1.options"
+                            closeClick='selected1.closeClick()' ng-cloak>
+            </ui-gmap-window>
+        </ui-gmap-google-map>
+              </div>
+
+    </div>
+
+    <div ng-if="elems.elmName == 'nearLoc'">
+
+<md-content  layout-padding layout="column" >
+            <label>Nearby Location</label>
+    <md-input-container flex id="searchBoxParentNearLoc">   </md-input-container></md-content><div > 
+     <ui-gmap-google-map
+                center="map2.center"
+                zoom="map2.zoom"
+                dragging="map2.dragging"
+                bounds="map2.bounds"
+                events="map2.events"
+                options="map2.options"
+                pan="true"
+                control="map2.control"
+                >
+            <ui-gmap-search-box options="searchbox2.options" template="searchbox2.template"
+                            events="searchbox2.events" position="searchbox2.position" parentdiv="searchbox2.parentdiv"></ui-gmap-search-box>
+
+       
+            <ui-gmap-markers idkey="map2.idkey" models="map2.markers" coords="'self'" icon="'icon'"
+                             click="'onClicked'"></ui-gmap-markers>
+            <ui-gmap-window coords="selected2" idkey="selected2.place_id" templateurl="selected2.templateurl"
+                            templateparameter="selected2.templateparameter" options="selected2.options"
+                            closeClick='selected2.closeClick()' ng-cloak>
+            </ui-gmap-window>
+        </ui-gmap-google-map>
+              </div>
+
+    </div>
+				
+				</md-grid-tile>
+				
+				</md-grid-list>

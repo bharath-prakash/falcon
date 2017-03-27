@@ -1,0 +1,100 @@
+  <link href="css/login_preview2.css" rel="stylesheet">
+<section id="signin_main" class="authenty signin-main" ng-controller="LoginCtrl">
+  <div class="section-content">
+          <div class="wrap">
+            <div class="container">   
+              <div class="form-wrap">
+                <div class="row">
+                  <div class="title animated fadeInDown" data-animation="fadeInDown" data-animation-delay=".8s" style="-webkit-animation-delay: 0.8s; animation-delay: 0.8s;">
+                    <h1><i class="fa fa-globe fa-1x "></i>
+        MyGeoData  <h5>Know your locations </h5></h1>
+                   
+                  </div>
+                  <div>
+                    <div  layout="column" data-animation="bounceIn" class="animated bounceIn md-whiteframe-z2">
+          <div class="form-header">
+          <i class="fa fa-user"></i>
+                    </div>
+  <md-content md-theme="" layout-padding class="autoScroll" >
+  <form name="loginForm" ng-submit="submitForm(loginForm.$valid)">
+    <md-input-container  >      
+      <label>Username</label>      
+      <input md-maxlength="30" required name="username" ng-model="user.username" >
+       <div ng-messages="loginForm.username.$error">
+          <div ng-message="required">Required.</div>
+        </div>
+    </md-input-container>
+
+    <md-input-container>
+      
+      <label>Password</label>
+      <input md-maxlength="20" required name="password" type="password" ng-model="user.password">
+       <div ng-messages="loginForm.password.$error">
+          <div ng-message="required">Required.</div>
+        </div>
+    </md-input-container>
+
+    <div class="bottom-sheet-demo inset" layout="row" layout-sm="column" layout-align="center">
+    <md-button flex="50" class="md-primary md-raised" ng-click="showListBottomSheet($event)">Sing In</md-button>
+    
+  </div>
+    <hr>
+<div class="bottom-sheet-demo inset " layout="row" layout-sm="column" layout-align="center">
+    <md-button flex="50" class="md-warn md-raised md-hue-2" ng-click="showListBottomSheet($event)">Forgot Password</md-button>
+    <md-button flex="50" class="md-primary md-raised md-hue-1" ng-click="showListBottomSheet($event)">Sing Up</md-button>
+    
+  </div>
+  </form>
+  </md-content>
+</div>
+<script type="text/ng-template" id="toast-template.html"><md-toast>
+  <span flex>Custom toast!</span>
+  <md-button ng-click="closeToast()">
+    Close
+  </md-button>
+</md-toast>
+</script>
+
+
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+        
+        </section>
+
+
+   
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <!--<script src="js/plugins/backstretch/jquery.backstretch.min.js"></script>-->
+    
+   
+   <script>
+
+$(function() {
+
+ /*$.backstretch([
+      "image/new_view1.png",
+        "image/new_view2.jpg",
+          "image/new_view3.jpg",
+            "image/new_view4.jpg",
+              "image/new_view5.jpg"
+    
+  ], {duration: 100000, fade: 1000});
+*/
+
+});
+
+   
+    </script>
+

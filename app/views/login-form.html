@@ -1,0 +1,47 @@
+<md-dialog aria-label="Login" class="login-form" md-theme="docs-bright"  ng-cloak>
+  <form>
+  <md-toolbar >
+    <div class="md-toolbar-tools">
+      <h2>   <md-icon md-svg-src="img/login.svg" aria-label="login" size="42"  style="" ></md-icon> Login</h2>
+      <span flex></span>
+      <md-button aria-label="Cancel" class="md-icon-button" ng-click="cancel()">
+       <ng-md-icon icon="cancel" ></ng-md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content style="max-width:800px;max-height:810px; ">
+    <div class="md-dialog-content">
+      <div ng-controller="LoginCtrl" layout="column" ng-cloak>
+  <br/>
+  <md-content layout-padding class="autoScroll">
+    <md-input-container class="md-icon-float md-block">
+      
+      <label>User Name</label>
+      <md-icon md-svg-src="img/account.svg" aria-label="login"  ></md-icon>
+      <input ng-model="user.name" type="text">
+    </md-input-container>
+    <md-input-container md-no-float class="md-block">
+    <label>Password</label>
+      <md-icon md-svg-src="img/key-variant.svg" aria-label="password"  ></md-icon>
+      <input ng-model="user.phone" type="password">
+    </md-input-container>
+    
+    
+  
+  </md-content>
+</div>
+    
+    </div>
+  </md-dialog-content>
+  <div class="md-actions" layout="row">
+    <md-button class="md-raised md-primary md-hue-1" ng-click="">Signup</md-button>
+    <span flex></span>
+    <section layout="row" layout-sm="column" layout-align="end center" layout-wrap>
+      <md-button class="md-raised md-primary md-hue-3" ng-click="">Login</md-button>
+      
+      <md-button class="md-raised md-dark">Reset</md-button>
+      
+    </section>    
+  </div>
+  </form>
+</md-dialog>

@@ -1,0 +1,49 @@
+<md-dialog aria-label="LoginSignup" class="login-form" md-theme="docs-bright"  ng-cloak>
+  <form>
+    <md-tabs md-selected="loginTabIndex" md-border-bottom md-autoselect style="min-height: 450px;">
+      <md-tab ng-repeat="tab in loginFromData"
+              
+              label="{{tab.text}}">
+        <div class="tab{{$index%4}}" style="padding: 25px; text-align: center;">
+          
+      <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>   <md-icon md-svg-src="{{tab.iconUrl}}" aria-label="login" size="42"  style="" ></md-icon> {{tab.text}}</h2>
+        <span flex></span>
+        
+      </div>
+      </md-toolbar>
+      <md-dialog-content style="max-width:800px;max-height:810px; ">
+      <div class="md-dialog-content">
+        <div  layout="column" ng-cloak>
+      <br/>
+      <md-content layout-padding class="autoScroll">
+      <md-input-container class="md-icon-float md-block" ng-repeat="inelm in tab.inputs">
+        
+        <label>{{inelm.label}}</label>
+        <md-icon md-svg-src="{{inelm.iconUrl}}" aria-label="{{inelm.label}}"  ></md-icon>
+        <input  type="{{inelm.type}}">
+      </md-input-container>
+      
+      </md-content>
+    </div>
+      
+      </div>
+      </md-dialog-content>
+      <div class="md-actions" layout="row">
+      <md-button class="md-raised md-primary" ng-class="tab.linkButton.ngClass" ng-click="">{{tab.linkButton.label}}</md-button>
+      <span flex></span>
+      <section layout="row" layout-sm="column" layout-align="end center" layout-wrap>
+        <md-button ng-repeat="btn in tab.actionButtons" class="md-raised md-primary" ng-class="btn.ngClass" ng-click="">{{btn.label}}</md-button>
+        
+      </section>    
+  </div>
+      
+      
+          
+        </div>
+      </md-tab>
+    </md-tabs>
+  
+  </form>
+</md-dialog>
